@@ -9,8 +9,6 @@ import * as LucideIcons from "lucide-react";
 
 interface SubMenuItem {
   name: string;
-  desc: string;
-  iconName?: keyof typeof import("lucide-react");
   group?: string;
   href: string;
 }

@@ -9,9 +9,7 @@ import { cn } from "@/lib/utils";
 
 interface SubMenuItem {
   name: string;
-  desc?: string;
   href: string;
-  iconName: keyof typeof import("lucide-react");
   group?: string;
 }
 

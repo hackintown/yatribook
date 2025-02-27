@@ -44,7 +44,7 @@ export default function BottomNav() {
   return (
     <nav className="bottom-nav">
       <div className="container">
-        <ul className="flex items-center justify-center gap-1 overflow-x-auto">
+        <ul className="flex items-center gap-x-8 md:gap-x-2 lg:justify-center overflow-x-auto">
           {BOTTOM_NAV_ITEMS.map((item) => (
             <li key={item.name}>
               <Link
@@ -61,7 +61,7 @@ export default function BottomNav() {
                   height={24}
                   className="group-hover:scale-110 transition-transform duration-200"
                 />
-                <span className="whitespace-nowrap text-[10px] sm:text-xs lg:text-[0.8rem] font-medium">
+                <span className="whitespace-nowrap text-xs lg:text-[0.8rem] font-medium">
                   {item.name}
                 </span>
               </Link>

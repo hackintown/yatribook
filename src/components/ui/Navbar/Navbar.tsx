@@ -8,12 +8,11 @@ import MobMenu from "./MobMenu";
 import { NAVIGATION_MENUS } from "./constants";
 import { throttle } from "lodash";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { FaWhatsapp, FaInstagram, FaTelegram } from "react-icons/fa";
 import { Button } from "../moving-border";
 
 const Logo = () => (
-  <Link href="/" className="block text-2xl font-bold">
+  <Link href="/" className="block text-base md:text-xl whitespace-nowrap lg:text-2xl font-inter font-semibold">
     Yatri Book
   </Link>
 );
@@ -73,16 +72,16 @@ export default function Navbar() {
 
           <DesktopNavigation />
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <MobileNavigation />
-            <div className="flex items-center gap-x-3">
+            <div className="flex items-center gap-x-2 md:gap-x-3">
               <Link
                 href="/"
                 className="social-icon-link group"
                 aria-label="WhatsApp"
               >
                 <div className="social-icon-wrapper">
-                  <FaWhatsapp className="social-icon text-whatsapp group-hover:scale-110" />
+                  <FaWhatsapp className="social-icon text-whatsapp group-hover:scale-110 size-4 md:size-5" />
                 </div>
               </Link>
               <Link
@@ -91,7 +90,7 @@ export default function Navbar() {
                 aria-label="Telegram"
               >
                 <div className="social-icon-wrapper">
-                  <FaTelegram className="social-icon text-telegram group-hover:scale-110" />
+                  <FaTelegram className="social-icon text-telegram group-hover:scale-110 size-4 md:size-5" />
                 </div>
               </Link>
               <Link
@@ -100,13 +99,13 @@ export default function Navbar() {
                 aria-label="Instagram"
               >
                 <div className="social-icon-wrapper instagram-gradient">
-                  <FaInstagram className="social-icon text-foreground group-hover:scale-110" />
+                  <FaInstagram className="social-icon text-foreground group-hover:scale-110 size-4 md:size-5" />
                 </div>
               </Link>
             </div>
             <Button
               borderRadius="1.75rem"
-              className="bg-red-700 font-semibold text-base"
+              className="bg-primaryBtn-to font-semibold shadow-md"
             >
               GET ID NOW
             </Button>

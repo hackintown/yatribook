@@ -39,7 +39,7 @@ export default function RootLayout({
           <Navbar />
           <BottomNav />
         </div>
-        <main className="pt-36 sm:pt-32">{children}</main>
+        <main className="pt-32 sm:pt-32">{children}</main>
       </body>
     </html>
   );

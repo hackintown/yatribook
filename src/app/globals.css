@@ -7,41 +7,63 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 :root {
   /* Main colors */
-  --background: hsl(0, 0%, 0%); /* Very dark, but not pure black */
-  --foreground: hsl(0, 0%, 98%); /* Almost white for maximum contrast */
+  --background: hsl(0, 0%, 0%);
+  /* Very dark, but not pure black */
+  --foreground: hsl(0, 0%, 98%);
+  /* Almost white for maximum contrast */
 
   /* Brand colors */
-  --primary: hsl(51, 100%, 50%); /* Vibrant gold */
-  --primary-dark: hsl(51, 100%, 35%); /* Darker gold for contrast */
-  --secondary: hsl(345, 100%, 60%); /* Vibrant hot pink */
-  --secondary-dark: hsl(345, 100%, 45%); /* Darker pink for contrast */
+  --primary: hsl(51, 100%, 50%);
+  /* Vibrant gold */
+  --primary-dark: hsl(51, 100%, 35%);
+  /* Darker gold for contrast */
+  --secondary: hsl(345, 100%, 60%);
+  /* Vibrant hot pink */
+  --secondary-dark: hsl(345, 100%, 45%);
+  /* Darker pink for contrast */
 
   /* Accent colors */
-  --accent-yellow: hsl(45, 100%, 50%); /* Bright warning yellow */
-  --accent-red: hsl(0, 100%, 65%); /* Bright error red */
-  --accent-green: hsl(160, 100%, 43%); /* Success green */
+  --accent-yellow: hsl(45, 100%, 50%);
+  /* Bright warning yellow */
+  --accent-red: hsl(0, 100%, 65%);
+  /* Bright error red */
+  --accent-green: hsl(160, 100%, 43%);
+  /* Success green */
 
   /* Surface colors */
-  --surface-dark: hsl(0, 0%, 7%); /* Slightly lighter than background */
-  --surface-light: hsl(0, 0%, 12%); /* Light surface for contrast */
+  --surface-dark: hsl(0, 0%, 7%);
+  /* Slightly lighter than background */
+  --surface-light: hsl(0, 0%, 12%);
+  /* Light surface for contrast */
 
   /* Additional Gaming Colors */
-  --neon-blue: hsl(183, 100%, 50%); /* Bright cyan */
-  --neon-purple: hsl(285, 99%, 54%); /* Electric purple */
-  --gaming-gray: hsl(0, 0%, 16%); /* Neutral gaming surface */
+  --neon-blue: hsl(183, 100%, 50%);
+  /* Bright cyan */
+  --neon-purple: hsl(285, 99%, 54%);
+  /* Electric purple */
+  --gaming-gray: hsl(0, 0%, 16%);
+  /* Neutral gaming surface */
 
   /* Social Media Colors */
   --whatsapp: hsl(142, 70%, 49%);
   --telegram: hsl(200, 73%, 50%);
-  --instagram: linear-gradient(
-    45deg,
-    hsl(37, 91%, 55%),
-    hsl(338, 75%, 51%),
-    hsl(272, 72%, 44%),
-    hsl(227, 66%, 57%)
-  );
+  --instagram: linear-gradient(45deg,
+      hsl(37, 91%, 55%),
+      hsl(338, 75%, 51%),
+      hsl(272, 72%, 44%),
+      hsl(227, 66%, 57%));
+  /* Button Colors */
+  --primary-btn-from: #000000;
+  --primary-btn-to: #FF0000;
+  --primary-btn: linear-gradient(180deg, var(--primary-btn-from) 0%, var(--primary-btn-to) 100%);
+
+  /* Font families */
+  --font-inter: var(--font-inter);
+  --font-jost: var(--font-jost);
+  --font-poppins: var(--font-poppins);
 }
 
 body {
@@ -58,6 +80,7 @@ body {
 }
 
 @layer components {
+
   /* ---------------------------------------
      NAVBAR
      --------------------------------------- */
@@ -119,12 +142,11 @@ body {
   }
 
   .social-icon-wrapper {
-    @apply p-2.5 rounded-full bg-surface-dark hover:bg-surface-light transition-all duration-300 
-           shadow-md hover:shadow-lg hover:-translate-y-0.5;
+    @apply  p-1.5 md:p-2.5 rounded-full bg-surface-dark hover:bg-surface-light transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
 
   .social-icon {
-    @apply size-5 transition-all duration-300;
+    @apply transition-all duration-300;
   }
 
   .instagram-gradient {
@@ -136,12 +158,38 @@ body {
      BOTTOM NAVBAR
      --------------------------------------- */
   .bottom-nav {
-    @apply bg-surface-dark backdrop-blur-md border-t border-b border-white/10 mt-20 italic
-           py-2 transition-all duration-300;
+    @apply bg-surface-dark backdrop-blur-md border-t border-b border-white/10 mt-20 italic py-2 transition-all duration-300;
   }
 
   .bottom-nav-link {
-    @apply flex items-center justify-center gap-x-2 px-2 sm:px-4 py-1
-           hover:text-primary transition-colors duration-200 text-foreground;
+    @apply flex items-center justify-center gap-x-2 px-2 sm:px-4 py-1 hover:text-primary transition-colors duration-200 text-foreground;
+  }
+
+  /* Hero Slider Styles */
+  .hero-slider .slick-dots {
+    bottom: 20px;
+    z-index: 10;
+  }
+
+  .hero-slider .slick-dots li button:before {
+    color: white;
+    opacity: 0.5;
+    font-size: 8px;
+  }
+
+  .hero-slider .slick-dots li.slick-active button:before {
+    color: var(--primary);
+    opacity: 1;
+  }
+
+  .hero-slider .slick-prev,
+  .hero-slider .slick-next {
+    z-index: 10;
+  }
+
+  /* Hide default slick arrows */
+  .hero-slider .slick-prev:before,
+  .hero-slider .slick-next:before {
+    display: none;
   }
 }
