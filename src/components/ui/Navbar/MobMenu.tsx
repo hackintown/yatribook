@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useCallback, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Search } from "lucide-react";
-import * as LucideIcons from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -46,11 +45,6 @@ export default function MobMenu({ Menus }: MobMenuProps) {
     setSearchQuery("");
   };
 
-  const getIcon = useCallback((iconName: keyof typeof LucideIcons) => {
-    const Icon = LucideIcons[iconName] as LucideIcons.LucideIcon;
-    return Icon ? <Icon className="h-5 w-5" /> : null;
-  }, []);
-
   const menuAnimation = {
     initial: { x: "-100%", opacity: 0 },
     animate: { x: "0%", opacity: 1 },
@@ -81,10 +75,8 @@ export default function MobMenu({ Menus }: MobMenuProps) {
     () =>
       Menus.map((menu) => ({
         ...menu,
-        subMenu: menu.subMenu?.filter(
-          (item) =>
-            item.name.toLowerCase().includes(debouncedQuery.toLowerCase()) ||
-            item.desc?.toLowerCase().includes(debouncedQuery.toLowerCase())
+        subMenu: menu.subMenu?.filter((item) =>
+          item.name.toLowerCase().includes(debouncedQuery.toLowerCase())
         ),
       })).filter(
         (menu) =>
@@ -189,21 +181,7 @@ export default function MobMenu({ Menus }: MobMenuProps) {
                                     onClick={handleMenuItemClick}
                                     className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors"
                                   >
-                                    {item.iconName && (
-                                      <div className="p-2 rounded-md bg-primary/10 text-primary">
-                                        {getIcon(item.iconName)}
-                                      </div>
-                                    )}
-                                    <div>
-                                      <h4 className="font-medium">
-                                        {item.name}
-                                      </h4>
-                                      {item.desc && (
-                                        <p className="text-sm text-foreground mt-0.5">
-                                          {item.desc}
-                                        </p>
-                                      )}
-                                    </div>
+                                    <h4 className="font-medium">{item.name}</h4>
                                   </Link>
                                 ))}
                               </div>

@@ -10,10 +10,13 @@ import { throttle } from "lodash";
 import { cn } from "@/lib/utils";
 import { FaWhatsapp, FaInstagram, FaTelegram } from "react-icons/fa";
 import { Button } from "../moving-border";
-
+import Image from "next/image";
 const Logo = () => (
-  <Link href="/" className="block text-base md:text-xl whitespace-nowrap lg:text-2xl font-inter font-semibold">
-    Yatri Book
+  <Link
+    href="/"
+    className="block text-base md:text-xl whitespace-nowrap lg:text-2xl font-inter font-semibold"
+  >
+    <Image src="/images/logo.png" alt="logo" width={100} height={100} />
   </Link>
 );
 

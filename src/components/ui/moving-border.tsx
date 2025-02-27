@@ -22,18 +22,18 @@ export function Button({
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: any;
+  as?: React.ElementType;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) {
   return (
     <Component
       className={cn(
         "bg-transparent relative text-xs lg:text-base h-10 lg:h-12 w-28 md:w-32 lg:w-40 p-[1px] overflow-hidden font-normal",
-        containerClassName  
+        containerClassName
       )}
       style={{
         borderRadius: borderRadius,
@@ -80,7 +80,7 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   const pathRef = useRef<SVGRectElement>(null);
   const progress = useMotionValue<number>(0);

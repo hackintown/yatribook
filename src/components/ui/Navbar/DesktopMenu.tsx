@@ -5,7 +5,6 @@ import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import * as LucideIcons from "lucide-react";
 
 interface SubMenuItem {
   name: string;
@@ -53,15 +52,6 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
   const hasSubMenu = React.useMemo(
     () => menu?.subMenu && menu?.subMenu?.length > 0,
     [menu?.subMenu]
-  );
-
-  const getIcon = React.useCallback(
-    (iconName: keyof typeof LucideIcons | undefined) => {
-      if (!iconName) return null;
-      const Icon = LucideIcons[iconName] as LucideIcons.LucideIcon;
-      return Icon ? <Icon /> : null;
-    },
-    []
   );
 
   const groupedSubMenus = React.useMemo(() => {
@@ -127,16 +117,8 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
                           onClick={handleMenuItemClick}
                           className="flex items-center gap-4 p-3 transition-colors"
                         >
-                          {submenu.iconName && (
-                            <div className="p-2 rounded-md bg-indigo-200">
-                              {getIcon(submenu.iconName)}
-                            </div>
-                          )}
                           <div>
                             <h4 className="font-medium">{submenu.name}</h4>
-                            <p className="text-sm text-foreground/80">
-                              {submenu.desc}
-                            </p>
                           </div>
                         </Link>
                       ))}
@@ -170,16 +152,8 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
                         </p>
                       )}
                     <div className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors">
-                      {submenu.iconName && (
-                        <div className="p-2 rounded-md bg-indigo-200">
-                          {getIcon(submenu.iconName)}
-                        </div>
-                      )}
                       <div>
                         <h6 className="font-medium">{submenu.name}</h6>
-                        <p className="text-sm text-foreground/80">
-                          {submenu.desc}
-                        </p>
                       </div>
                     </div>
                   </Link>
