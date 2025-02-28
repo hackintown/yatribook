@@ -3,6 +3,7 @@ import { Inter, Jost, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar/Navbar";
 import BottomNav from "@/components/ui/Navbar/BottomNavbar";
+import Footer from "@/components/ui/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,11 +36,12 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jost.variable} ${poppins.variable} antialiased`}
       >
-        <div className="fixed top-0 w-full z-50 flex flex-col">
+        <div className="fixed top-0 w-full z-50 backdrop-blur-sm">
           <Navbar />
           <BottomNav />
         </div>
-        <main className="pt-32 sm:pt-32">{children}</main>
+        <main className="pt-32 min-h-[calc(100vh-80px)]">{children}</main>
+        <Footer />
       </body>
     </html>
   );

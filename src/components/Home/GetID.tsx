@@ -41,7 +41,7 @@ export default function GetID() {
               best online cricket betting ID
             </span>
           </p>
-          <Link href="https://wa.me/your_number_here" passHref>
+          <Link href="https://wa.me/919840000000" passHref>
             <Button
               variant="primary"
               size="xl"
