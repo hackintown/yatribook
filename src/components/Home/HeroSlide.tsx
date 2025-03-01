@@ -55,32 +55,42 @@ export default function HeroSlide({ slide, isActive = false }: HeroSlideProps) {
 
           {/* Call to Action Button */}
           <div className="pt-4">
-            <button className="group relative px-6 py-3 bg-surface-dark hover:bg-surface-light 
+            <button
+              className="group relative px-6 py-3 bg-surface-dark hover:bg-surface-light 
               border border-primary/20 rounded-lg transition-all duration-300
-              hover:border-primary/40 hover:shadow-[0_0_20px_rgba(255,215,0,0.1)]">
-              <span className="relative z-10 text-foreground group-hover:text-primary 
-                transition-colors duration-300">
+              hover:border-primary/40 hover:shadow-[0_0_20px_rgba(255,215,0,0.1)]"
+            >
+              <span
+                className="relative z-10 text-foreground group-hover:text-primary 
+                transition-colors duration-300"
+              >
                 Learn More
               </span>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100
                 bg-gradient-to-r from-primary/10 to-transparent
-                rounded-lg transition-opacity duration-300" />
+                rounded-lg transition-opacity duration-300"
+              />
             </button>
           </div>
         </motion.div>
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-32 
-        bg-gradient-to-t from-background to-transparent" />
-      <div className="absolute top-0 right-0 w-64 h-64 
-        bg-neon-purple/10 blur-[100px] rounded-full" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 
-        bg-neon-blue/10 blur-[100px] rounded-full" />
+      <div
+        className="absolute bottom-0 left-0 w-full h-32 
+        bg-gradient-to-t from-background to-transparent"
+      />
+      <div
+        className="absolute top-0 right-0 w-64 h-64 
+        bg-neon-purple/10 blur-[100px] rounded-full"
+      />
+      <div
+        className="absolute bottom-0 left-0 w-64 h-64 
+        bg-neon-blue/10 blur-[100px] rounded-full"
+      />
     </div>
   );
 }
 
-export const heroSlides: IHeroSlide[] = [
-
-];
+export const heroSlides: IHeroSlide[] = [];

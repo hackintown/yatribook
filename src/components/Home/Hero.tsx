@@ -67,8 +67,43 @@ export default function Hero() {
     return null;
   }
 
+  // If there's only one slide, render it without the slider
+  if (slides.length === 1) {
+    return (
+      <section className="relative w-full overflow-hidden">
+        {/* Mobile View */}
+        <div className="block lg:hidden">
+          <div className="relative h-[300px]">
+            <Image
+              src={slides[0].imageUrl}
+              alt={slides[0].title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Desktop View */}
+        <div className="hidden lg:block">
+          <div className="relative h-[300px] lg:h-[350px] xl:h-[500px] 2xl:h-[600px]">
+            <Image
+              src={slides[0].imageUrl}
+              alt={slides[0].title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // If there are multiple slides, render the slider
   return (
     <section className="relative w-full overflow-hidden">
+      {/* Mobile Slider */}
       <div className="block lg:hidden">
         <Slider {...settings} className="hero-slider">
           {slides.map((slide, idx) => (
@@ -89,7 +124,10 @@ export default function Hero() {
       <div className="hidden lg:block">
         <Slider {...settings} className="hero-slider">
           {slides.map((slide, idx) => (
-            <div key={idx} className="relative h-[300px] lg:h-[350px] xl:h-[500px] 2xl:h-[600px]">
+            <div
+              key={idx}
+              className="relative h-[300px] lg:h-[350px] xl:h-[500px] 2xl:h-[600px]"
+            >
               <Image
                 src={slide.imageUrl}
                 alt={slide.title}
@@ -101,6 +139,6 @@ export default function Hero() {
           ))}
         </Slider>
       </div>
-    </section >
+    </section>
   );
 }

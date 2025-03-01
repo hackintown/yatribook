@@ -52,8 +52,20 @@ export default function HeroSlideModal({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Add your file upload logic here
-    // Example using FormData:
+    // Validate file type
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Please upload a valid image file (JPEG, PNG, or WebP)");
+      return;
+    }
+
+    // Validate file size (e.g., 5MB limit)
+    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+    if (file.size > maxSize) {
+      toast.error("File size must be less than 5MB");
+      return;
+    }
+
     try {
       setIsUploading(true);
       const formData = new FormData();
@@ -64,16 +76,31 @@ export default function HeroSlideModal({
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Upload failed");
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || "Upload failed");
+      }
 
       const data = await response.json();
-      setFormData(prev => ({ ...prev, imageUrl: data.url }));
+
+      // Ensure the URL is properly formatted
+      const imageUrl = data.url.startsWith("http")
+        ? data.url
+        : `${window.location.origin}${data.url}`;
+
+      setFormData((prev) => ({ ...prev, imageUrl }));
       toast.success("Image uploaded successfully");
     } catch (error) {
-      toast.error("Failed to upload image");
+      toast.error(
+        error instanceof Error ? error.message : "Failed to upload image"
+      );
       console.error(error);
     } finally {
       setIsUploading(false);
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
     }
   };
 
