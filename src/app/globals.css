@@ -7,6 +7,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 :root {
   /* Main colors */
@@ -50,15 +53,21 @@
   /* Social Media Colors */
   --whatsapp: hsl(142, 70%, 49%);
   --telegram: hsl(200, 73%, 50%);
-  --instagram: linear-gradient(45deg,
-      hsl(37, 91%, 55%),
-      hsl(338, 75%, 51%),
-      hsl(272, 72%, 44%),
-      hsl(227, 66%, 57%));
+  --instagram: linear-gradient(
+    45deg,
+    hsl(37, 91%, 55%),
+    hsl(338, 75%, 51%),
+    hsl(272, 72%, 44%),
+    hsl(227, 66%, 57%)
+  );
   /* Button Colors */
   --primary-btn-from: #000000;
-  --primary-btn-to: #FF0000;
-  --primary-btn: linear-gradient(180deg, var(--primary-btn-from) 0%, var(--primary-btn-to) 100%);
+  --primary-btn-to: #ff0000;
+  --primary-btn: linear-gradient(
+    180deg,
+    var(--primary-btn-from) 0%,
+    var(--primary-btn-to) 100%
+  );
 
   /* Font families */
   --font-inter: var(--font-inter);
@@ -80,7 +89,6 @@ body {
 }
 
 @layer components {
-
   /* ---------------------------------------
      NAVBAR
      --------------------------------------- */
@@ -142,7 +150,7 @@ body {
   }
 
   .social-icon-wrapper {
-    @apply  p-1.5 md:p-2.5 rounded-full bg-surface-dark hover:bg-surface-light transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
+    @apply p-1.5 md:p-2.5 rounded-full bg-surface-dark border border-white/10 hover:bg-surface-light transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
 
   .social-icon {

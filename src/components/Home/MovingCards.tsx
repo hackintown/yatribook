@@ -5,7 +5,7 @@ const bulletPoints = [
     text: "BONUS ON FIRST DEPOSIT.",
   },
   {
-    text: "LIVE CASINO ON AMIRIBOOK.",
+    text: "LIVE CASINO ON YATRIBOOK.",
   },
   {
     text: "INDIA'S NO 1 MOST TRUSTED BOOK.",
@@ -17,14 +17,13 @@ const bulletPoints = [
 
 export default function MovingCards() {
   return (
-    <div className="bg-background max-w-7xl mx-auto">
+    <div className="bg-background">
       <InfiniteMovingCards
         items={bulletPoints}
         direction="left"
         speed="fast"
-        className="py-2 md:py-4"
+        className="py-1"
       />
     </div>
   );
 }
-

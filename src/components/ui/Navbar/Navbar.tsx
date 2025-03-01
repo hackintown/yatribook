@@ -7,10 +7,11 @@ import DesktopMenu from "./DesktopMenu";
 import MobMenu from "./MobMenu";
 import { NAVIGATION_MENUS } from "./constants";
 import { throttle } from "lodash";
-import { cn } from "@/lib/utils";
+import { cn, smoothScrollTo } from "@/lib/utils";
 import { FaWhatsapp, FaInstagram, FaTelegram } from "react-icons/fa";
 import { Button } from "../moving-border";
 import Image from "next/image";
+
 const Logo = () => (
   <Link
     href="/"
@@ -20,21 +21,46 @@ const Logo = () => (
   </Link>
 );
 
-const DesktopNavigation = () => (
-  <nav className="hidden lg:flex items-center gap-2">
-    <ul className="flex items-center gap-2 text-base">
-      {NAVIGATION_MENUS.map((menu) => (
-        <DesktopMenu key={menu.name} menu={menu} />
-      ))}
-    </ul>
-  </nav>
-);
+const DesktopNavigation = () => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const elementId = href.substring(1);
+      smoothScrollTo(elementId);
+    }
+  };
 
-const MobileNavigation = () => (
-  <nav className="flex lg:hidden items-center gap-2">
-    <MobMenu Menus={NAVIGATION_MENUS} />
-  </nav>
-);
+  return (
+    <nav className="hidden lg:flex items-center gap-2">
+      <ul className="flex items-center gap-2 text-base">
+        {NAVIGATION_MENUS.map((menu) => (
+          <DesktopMenu key={menu.name} menu={menu} onLinkClick={handleClick} />
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+const MobileNavigation = () => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const elementId = href.substring(1);
+      smoothScrollTo(elementId);
+    }
+  };
+  return (
+    <nav className="flex lg:hidden items-center gap-2">
+      <MobMenu Menus={NAVIGATION_MENUS} onLinkClick={handleClick} />
+    </nav>
+  );
+};
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,6 +68,21 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
+    // Prevent initial scroll to hash on page load
+    if (window.location.hash) {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+
+      // Optional: Smooth scroll to hash after a small delay
+      const hash = window.location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          smoothScrollTo(hash);
+        }
+      }, 500);
+    }
+
     const handleScroll = throttle(() => {
       setIsScrolled(window.scrollY > 20);
 
@@ -62,7 +103,7 @@ export default function Navbar() {
       className={cn(
         "nav-container",
         isScrolled ? "nav-scrolled" : "bg-background",
-        "py-1 transition-transform duration-300 shadow-sm",
+        "py-1 transition-transform duration-300 shadow-sm mt-10",
         !isVisible && "-translate-y-full"
       )}
       initial={{ y: -100 }}
@@ -79,7 +120,7 @@ export default function Navbar() {
             <MobileNavigation />
             <div className="flex items-center gap-x-2 md:gap-x-3">
               <Link
-                href="/"
+                href="https://wa.me/919310764844"
                 className="social-icon-link group"
                 aria-label="WhatsApp"
               >
@@ -88,7 +129,7 @@ export default function Navbar() {
                 </div>
               </Link>
               <Link
-                href="/"
+                href="https://t.me/yatribook"
                 className="social-icon-link group"
                 aria-label="Telegram"
               >
@@ -97,7 +138,7 @@ export default function Navbar() {
                 </div>
               </Link>
               <Link
-                href="/"
+                href="https://www.instagram.com/yatri_book"
                 className="social-icon-link group"
                 aria-label="Instagram"
               >
@@ -106,12 +147,14 @@ export default function Navbar() {
                 </div>
               </Link>
             </div>
-            <Button
-              borderRadius="1.75rem"
-              className="bg-primaryBtn-to font-semibold shadow-md"
-            >
-              GET ID NOW
-            </Button>
+            <Link href="https://wa.me/919310764844" target="_blank" passHref>
+              <Button
+                borderRadius="1.75rem"
+                className="bg-primary text-background font-semibold shadow-md"
+              >
+                GET ID NOW
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

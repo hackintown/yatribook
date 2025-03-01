@@ -85,11 +85,8 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <li
-            className="flex-shrink-0"
-            key={idx}
-          >
-            <span className="text-primary font-normal italic text-sm lg:text-base flex items-center gap-2">
+          <li className="flex-shrink-0" key={idx}>
+            <span className="text-primary font-normal italic text-sm flex items-center gap-2">
               <HiArrowRightCircle className="size-6" /> {item.text}
             </span>
           </li>

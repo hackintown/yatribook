@@ -15,17 +15,17 @@ export const NAVIGATION_MENUS = [
     subMenu: [
       {
         name: "Sky Exchange",
-        href: "/active-ipos",
+        href: "#partner-sec",
         group: "Partner",
       },
       {
         name: "Go Exchange 777",
-        href: "/recently-listed",
+        href: "#partner-sec",
         group: "Partner",
       },
       {
         name: "Go Exchange",
-        href: "/recently-listed",
+        href: "#partner-sec",
         group: "Partner",
       },
     ],
@@ -38,22 +38,22 @@ export const NAVIGATION_MENUS = [
     subMenu: [
       {
         name: "Online Cricket ID",
-        href: "/active-ipos",
+        href: "#footer-sec",
         group: "Mainboard IPOs",
       },
       {
         name: "Online Betting ID",
-        href: "/recently-listed",
+        href: "#footer-sec",
         group: "Online Betting Site",
       },
       {
         name: "Mahakal Online Book",
-        href: "/recently-listed",
+        href: "#footer-sec",
         group: "Online Betting Site",
       },
       {
         name: "Tiger Exchange 247",
-        href: "/recently-listed",
+        href: "#footer-sec",
         group: "Online Betting Site",
       },
     ],
@@ -62,11 +62,11 @@ export const NAVIGATION_MENUS = [
   },
   {
     name: "Blog",
-    href: "/blog",
+    href: "#",
   },
   {
     name: "Contact Us",
-    href: "/contact-us",
+    href: "https://wa.me/919310764844",
   },
 ] as const satisfies MenuItem[];
 

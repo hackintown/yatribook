@@ -11,32 +11,32 @@ interface PartnerCardProps {
 
 const partnerData: PartnerCardProps[] = [
   {
-    logo: "/images/madras-logo.webp",
-    name: "Madras365",
-    userId: "MadrasBook",
-    password: "Madras1234",
-    link: "#",
+    logo: "/images/skyexchange.webp",
+    name: "Sky Exchange",
+    userId: "Yatribook",
+    password: "Yatri1234",
+    link: "https://wa.me/919310764844",
   },
   {
-    logo: "/images/salasar-logo.webp",
-    name: "Salasar",
-    userId: "MadrasBook",
-    password: "Madras1234",
-    link: "#",
+    logo: "/images/goexchange.webp",
+    name: "Go Exchange",
+    userId: "Yatribook",
+    password: "Yatri1234",
+    link: "https://wa.me/919310764844",
   },
   {
-    logo: "/images/rolls-logo.webp",
-    name: "Rolls",
-    userId: "MadrasBook",
-    password: "Madras1234",
-    link: "#",
+    logo: "/images/my99.jpg",
+    name: "My99",
+    userId: "Yatribook",
+    password: "Yatri1234",
+    link: "https://wa.me/919310764844",
   },
   {
     logo: "/images/tigerexch-logo.webp",
     name: "Tigerexch",
-    userId: "MadrasBook",
-    password: "Madras1234",
-    link: "#",
+    userId: "Yatribook",
+    password: "Yatri1234",
+    link: "https://wa.me/919310764844",
   },
 ];
 
@@ -132,6 +132,7 @@ const PartnerCard = ({
         {/* CTA Button */}
         <Link
           href={link}
+          target="_blank"
           className="mt-2 block rounded-lg bg-primary px-6 py-3 text-center font-semibold text-background transition-all duration-300 hover:bg-primary-dark"
         >
           Get ID
@@ -143,7 +144,7 @@ const PartnerCard = ({
 
 export default function Partner() {
   return (
-    <section className="py-16">
+    <section id="partner-sec" className="py-16">
       <div className="container">
         <h2 className="mb-12 text-center text-4xl font-bold text-primary">
           Our Partners

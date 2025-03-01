@@ -23,23 +23,23 @@ export default function GetID() {
 
           {/* Description */}
           <p className="text-base md:text-lg mb-8 leading-relaxed">
-            Is it accurate to say that you are on the quest for the top provider
-            of online cricket betting IDs? Well, your search ends with
-            MadrasBook! We provide a hassle-free and safe means of acquiring
-            your{" "}
+            Looking for a trusted and professional cricket ID provider?
+            YatriBook is your premier destination for secure online cricket IDs.
+            We offer a seamless and reliable platform to obtain your{" "}
             <span className="text-primary font-medium">online cricket ID</span>{" "}
-            and exploiting the betting opportunities on the matches you love.
-            With MadrasBook, you will enjoy special betting segments, better
-            betting odds, and a secure and easy to use interface that enhances
-            your love for cricket betting.
+            with complete peace of mind. Experience premium features,
+            competitive odds, and a user-friendly interface designed to enhance
+            your cricket experience.
           </p>
 
           <p className="text-base md:text-lg mb-12 leading-relaxed">
-            Now, let&apos;s explore the reasons why MadrasBook is the best place
-            online for those people who are in search of the
+            Discover why YatriBook stands out as the leading platform for those
+            seeking a{" "}
             <span className="text-accent-yellow font-medium">
-              best online cricket betting ID
+              premium online cricket ID
             </span>
+            . Join thousands of satisfied users who trust our professional
+            services.
           </p>
           <Link href="https://wa.me/919840000000" passHref>
             <Button

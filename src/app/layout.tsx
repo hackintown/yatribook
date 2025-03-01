@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar/Navbar";
 import BottomNav from "@/components/ui/Navbar/BottomNavbar";
 import Footer from "@/components/ui/Footer";
-
+import MovingCards from "@/components/Home/MovingCards";
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -37,6 +37,7 @@ export default function RootLayout({
         className={`${inter.variable} ${jost.variable} ${poppins.variable} antialiased`}
       >
         <div className="fixed top-0 w-full z-50 backdrop-blur-sm">
+          <MovingCards />
           <Navbar />
           <BottomNav />
         </div>

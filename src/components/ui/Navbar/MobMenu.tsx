@@ -23,9 +23,10 @@ interface MenuItem {
 
 interface MobMenuProps {
   Menus: MenuItem[];
+  onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
-export default function MobMenu({ Menus }: MobMenuProps) {
+export default function MobMenu({ Menus, onLinkClick }: MobMenuProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [clicked, setClicked] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -142,14 +143,23 @@ export default function MobMenu({ Menus }: MobMenuProps) {
                           <Link
                             href={menu.href}
                             className="flex items-center gap-2 p-4 hover:bg-white/5 rounded-lg transition-colors"
-                            onClick={handleMenuItemClick}
+                            onClick={(e) => {
+                              handleMenuItemClick();
+                              onLinkClick(e, menu.href || "#");
+                            }}
                           >
                             <span className="font-medium">{menu.name}</span>
                           </Link>
                         ) : (
                           <button
                             className="w-full flex items-center justify-between p-4 hover:bg-white/5 rounded-lg transition-colors"
-                            onClick={() => setClicked(isClicked ? null : i)}
+                            onClick={(e) => {
+                              setClicked(isClicked ? null : i);
+                              onLinkClick(
+                                e as unknown as React.MouseEvent<HTMLAnchorElement>,
+                                menu.href || "#"
+                              );
+                            }}
                             aria-expanded={isClicked}
                           >
                             <span className="font-medium">{menu.name}</span>
@@ -178,7 +188,10 @@ export default function MobMenu({ Menus }: MobMenuProps) {
                                   <Link
                                     key={item.name}
                                     href={item.href}
-                                    onClick={handleMenuItemClick}
+                                    onClick={(e) => {
+                                      handleMenuItemClick();
+                                      onLinkClick(e, item.href || "#");
+                                    }}
                                     className="flex items-start gap-4 p-3 rounded-lg hover:bg-white/5 transition-colors"
                                   >
                                     <h4 className="font-medium">{item.name}</h4>

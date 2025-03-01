@@ -25,6 +25,7 @@ interface MenuItem {
 
 interface DesktopMenuProps {
   menu: MenuItem;
+  onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 }
 
 const subMenuAnimate = {
@@ -42,12 +43,8 @@ const subMenuAnimate = {
   },
 } as const;
 
-export default function DesktopMenu({ menu }: DesktopMenuProps) {
+export default function DesktopMenu({ menu, onLinkClick }: DesktopMenuProps) {
   const [isHover, setIsHover] = useState(false);
-
-  const handleMenuItemClick = () => {
-    setIsHover(false);
-  };
 
   const hasSubMenu = React.useMemo(
     () => menu?.subMenu && menu?.subMenu?.length > 0,
@@ -73,7 +70,10 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
       key={menu.name}
     >
       {!hasSubMenu && menu.href ? (
-        <Link href={menu.href}>
+        <Link
+          href={menu.href || "#"}
+          onClick={(e) => onLinkClick(e, menu.href || "#")}
+        >
           <span className="flex items-center font-medium text-xs xl:text-base gap-1 hover:bg-white/5 cursor-pointer px-3 py-1 rounded-xl">
             {menu.name}
           </span>
@@ -114,7 +114,7 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
                         <Link
                           href={submenu.href || "#"}
                           key={submenu.name}
-                          onClick={handleMenuItemClick}
+                          onClick={(e) => onLinkClick(e, submenu.href || "#")}
                           className="flex items-center gap-4 p-3 transition-colors"
                         >
                           <div>
@@ -141,7 +141,7 @@ export default function DesktopMenu({ menu }: DesktopMenuProps) {
                   <Link
                     href={submenu.href || "#"}
                     key={`${menu.name}-submenu-${i}`}
-                    onClick={handleMenuItemClick}
+                    onClick={(e) => onLinkClick(e, submenu.href || "#")}
                     className="relative cursor-pointer"
                   >
                     {menu.gridCols &&
